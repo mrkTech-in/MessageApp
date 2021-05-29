@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MessageApp</string>
+    <string name="receivedreply">recivedreply</string>
+    <string name="send">send</string>
+    <string name="reply">reply</string>
+    <string name="message_recieved">message_recived</string>
+</resources>
