@@ -1,4 +1,4 @@
-package com.example.messageapp;
+ package com.example.messageapp;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +14,7 @@ import static com.example.messageapp.Second.EXTRA_REPLY;
 
 public class MainActivity extends AppCompatActivity {
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
-    public static final String EXTRA_MESSAGE = "com.example.android.messageapp.extra.Message";
+    public static final String EXTRA_MESSAGE = "com.example.android.messageapp.extra.MESSAGE ";
     private static final int TEXT_REQUEST = 1;
 
     private TextView mReplyView;
@@ -27,10 +27,47 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Log.d(LOG_TAG, "...................");
+        Log.d(LOG_TAG, "onCreate ");
         mMessageEditText = findViewById(R.id.editText_main);
         mreplyHeadtextView = findViewById(R.id.text_header_reply);
         mReplyView = findViewById(R.id.text_message_reply);
+
+       /* if(savedInstanceState != null){
+            boolean isVisible = savedInstanceState.getBoolean("reply_vissible");
+            if (isVisible){
+                mreplyHeadtextView.setVisibility(View.VISIBLE);
+                mReplyView.setText(savedInstanceState.getString("reply_text"));
+                mReplyView.setVisibility(View.VISIBLE);
+            }
+        }*/
     }
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+        Log.d(LOG_TAG, "...................");
+        Log.d(LOG_TAG, "onStart ");
+    }
+    @Override
+    protected void onPause(){
+        super.onPause();
+        Log.d(LOG_TAG, "...................");
+        Log.d(LOG_TAG, "onPause ");
+    }
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        Log.d(LOG_TAG, "...................");
+        Log.d(LOG_TAG, "onDestroy ");
+    }
+    @Override
+    protected void onStop(){
+        super.onStop();
+        Log.d(LOG_TAG, "...................");
+        Log.d(LOG_TAG, "onStop ");
+    }
+
 
     public void launchSecondActivity(View view){
         Log.d("Button_Clicked", "Button_Clicked");
@@ -39,6 +76,18 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(EXTRA_MESSAGE,message);
         startActivityForResult(intent, TEXT_REQUEST);
     }
+
+   /* @Override
+    protected void onSaveInstanceState(@Nullable Bundle outState){
+        super.onSaveInstanceState(outState);
+        if (mreplytextheader.getVisibility() == View.VISIBLE){
+            outState.putBoolean("reply_vissible", true);
+            outState.putString("reply_text",mReplyView.getText().toString());
+
+        }
+    }*/
+
+
 
 
     @Override

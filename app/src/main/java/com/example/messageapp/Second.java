@@ -4,25 +4,54 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
 public class Second extends AppCompatActivity {
 
-    public static final String EXTRA_REPLY = "com.example.android.messageapp.extra.reply";
+    public static final String EXTRA_REPLY = "com.example.android.messageapp.extra.REPLY";
+    private static final String LOG_TAG = Second.class.getSimpleName();
     private EditText mReply;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
+        Log.d(LOG_TAG, "...................");
+        Log.d(LOG_TAG, "onCreate ");
         mReply = findViewById(R.id.editText_second);
         Intent intent = getIntent();
         String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
         TextView textView = findViewById(R.id.textMessage);
         textView.setText(message);
 
+    }
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+        Log.d(LOG_TAG, "...................");
+        Log.d(LOG_TAG, "onStart ");
+    }
+    @Override
+    protected void onPause(){
+        super.onPause();
+        Log.d(LOG_TAG, "...................");
+        Log.d(LOG_TAG, "onPause ");
+    }
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        Log.d(LOG_TAG, "...................");
+        Log.d(LOG_TAG, "onDestroy ");
+    }
+    @Override
+    protected void onStop(){
+        super.onStop();
+        Log.d(LOG_TAG, "...................");
+        Log.d(LOG_TAG, "onStop ");
     }
 
     public void returnReply(View view){
